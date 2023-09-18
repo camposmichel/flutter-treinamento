@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo/cubits/cubit_providers.dart';
 import 'package:todo/routes.dart';
 import 'package:todo/ui/app_theme.dart';
 
@@ -11,12 +13,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: AppTheme.themeData,
-      routes: Routes.routes,
-      initialRoute: Routes.home,
+    return MultiBlocProvider(
+      providers: CubitProvivers.instancies,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: AppTheme.themeData,
+        routes: Routes.routes,
+        initialRoute: Routes.home,
+      ),
     );
   }
 }
