@@ -2,6 +2,8 @@
 
 A new Flutter project.
 
+`json-server --watch ./assets/data/pokemon_data.json --host 192.168.0.105`
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.

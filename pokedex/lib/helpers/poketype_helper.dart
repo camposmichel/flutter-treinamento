@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pokedex/models/pokemon_model.dart';
 import 'package:pokedex/ui/app_theme.dart';
 
 class PokeTypeHelper {
@@ -49,15 +50,19 @@ class PokeTypeHelper {
     }
   }
 
-  static LinearGradient getGradientByPokemon(dynamic pokemon) {
+  static LinearGradient? getGradientByPokemon(PokemonModel pokemon) {
     final List<Color> typesColors = [];
 
-    pokemon.types?.forEach((e) {
-      typesColors.add(getColorByType(e.type!.name!));
-    });
+    for (var e in pokemon.types) {
+      typesColors.add(getColorByType(e));
+    }
 
     if (typesColors.length == 1) {
       typesColors.add(typesColors.first);
+    }
+
+    if (typesColors.isEmpty) {
+      return null;
     }
 
     return LinearGradient(
