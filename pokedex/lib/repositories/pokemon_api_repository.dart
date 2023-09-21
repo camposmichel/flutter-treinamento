@@ -11,7 +11,7 @@ class PokemonApiRepository implements IPokemonRepository {
   Future<List<PokemonModel>> getPokemons({int page = 0}) async {
     try {
       final response = await _http.get(
-          'https://pokeapi.co/api/v2/pokemon?offset=${page * 20}&limit=20');
+          'https://pokeapi.co/api/v2/pokemon?offset=${(page - 1) * 20}&limit=20');
       final data = response.data as Map<String, dynamic>;
       final pokeList = data['results'] as List<dynamic>;
 

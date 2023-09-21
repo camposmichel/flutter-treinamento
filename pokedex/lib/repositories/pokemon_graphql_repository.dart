@@ -29,7 +29,7 @@ class PokemonGraphqlRepository implements IPokemonRepository {
 
       final QueryResult response = await _client.query(QueryOptions(
         document: gql(query),
-        variables: {'offset': page * 20},
+        variables: {'offset': (page - 1) * 20},
       ));
 
       if (response.data == null) return List.empty();
